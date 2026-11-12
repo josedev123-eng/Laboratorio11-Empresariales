@@ -1,0 +1,61 @@
+.movie-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+}
+
+.movie-card-image {
+  position: relative;
+}
+
+.movie-card-image img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.movie-card-classification {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+}
+
+.movie-card-body {
+  padding: var(--space-md);
+}
+
+.movie-card-body h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.movie-card-rating {
+  color: var(--color-star);
+  margin-bottom: var(--space-sm);
+}
+
+.movie-card-schedules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.movie-card-schedules li {
+  border: 1px solid var(--color-primary);
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+.movie-card-actions {
+  margin-top: var(--space-md);
+}

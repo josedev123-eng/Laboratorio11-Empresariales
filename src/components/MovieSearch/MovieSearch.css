@@ -1,0 +1,6 @@
+.movie-search {
+  width: 100%;
+  max-width: 480px;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-md);
+}

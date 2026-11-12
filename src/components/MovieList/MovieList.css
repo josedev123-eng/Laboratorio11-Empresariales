@@ -1,0 +1,21 @@
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-md);
+}
+
+.movie-list-empty {
+  text-align: center;
+  background-color: var(--color-surface);
+  border: 2px dashed #3a3f4a;
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+}
+
+.movie-list-empty-icon {
+  font-size: 2.5rem;
+}
+
+.movie-list-empty h3 {
+  margin: var(--space-sm) 0;
+}

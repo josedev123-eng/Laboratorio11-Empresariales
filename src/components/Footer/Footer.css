@@ -1,0 +1,29 @@
+.footer {
+  background-color: var(--color-surface);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 2px solid var(--color-primary);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.footer h3,
+.footer h4 {
+  margin-bottom: var(--space-sm);
+}
+
+.footer p {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.footer-copy {
+  text-align: center;
+  padding: var(--space-md);
+  margin-top: var(--space-lg);
+  border-top: 1px solid #2a2e36;
+}

@@ -1,0 +1,41 @@
+.header {
+  background-color: var(--color-surface);
+  border-bottom: 2px solid var(--color-primary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.header-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header-logo span {
+  color: var(--color-primary);
+}
+
+.header-nav {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.header-nav a {
+  color: var(--color-muted);
+}
+
+.header-nav a:hover {
+  color: var(--color-text);
+}
+
+.header-favorites {
+  color: var(--color-primary);
+  font-weight: bold;
+}

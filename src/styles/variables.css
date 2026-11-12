@@ -1,0 +1,18 @@
+/* Colors and sizes used in the whole app */
+:root {
+  --color-bg: #0f1115;
+  --color-surface: #1a1d24;
+  --color-primary: #e50914;
+  --color-text: #f2f2f2;
+  --color-muted: #a0a4ab;
+  --color-star: #f5c518;
+
+  --font-main: 'Segoe UI', Arial, sans-serif;
+
+  --radius: 8px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+
+  --max-width: 1200px;
+}
