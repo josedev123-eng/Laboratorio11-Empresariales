@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import Header from './components/Header/Header.jsx'
 import Hero from './components/Hero/Hero.jsx'
+import PremieresSection from './components/PremieresSection/PremieresSection.jsx'
 import MovieList from './components/MovieList/MovieList.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import moviesApi from './data/movies.js'
@@ -47,6 +48,7 @@ function App() {
       <Header favoritesCount={favorites.length} />
       <main>
         <Hero movie={featuredMovie} onSearch={setSearch} />
+        <PremieresSection />
         <MovieList
           movies={movies}
           search={search}

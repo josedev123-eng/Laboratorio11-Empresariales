@@ -1,0 +1,16 @@
+.premieres-skeletons {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.premieres-error {
+  text-align: center;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+}
+
+.premieres-error h3 {
+  margin-bottom: var(--space-sm);
+}
