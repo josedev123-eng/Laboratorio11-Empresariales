@@ -1,25 +1,18 @@
 import { useState, useEffect } from 'react'
+import useDebounce from '../../hooks/useDebounce.js'
 import './MovieSearch.css'
 
 function MovieSearch({ onSearch }) {
   // The text of the input lives in the state (controlled input)
   const [text, setText] = useState('')
 
-  function handleChange(event) {
-    console.log('Typing:', event.target.value)
-    setText(event.target.value)
-  }
+  // The text waits 500 ms before being used
+  const debouncedText = useDebounce(text, 500)
 
-  // Waits 500 ms after the last key before sending the text to App
+  // Sends the text to App only when the debounced value changes
   useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log('Searching:', text)
-      onSearch(text)
-    }, 500)
-
-    // If the user types again before 500 ms, the previous timer is cancelled
-    return () => clearTimeout(timer)
-  }, [text, onSearch])
+    onSearch(debouncedText)
+  }, [debouncedText, onSearch])
 
   return (
     <div className="movie-search">
@@ -30,7 +23,7 @@ function MovieSearch({ onSearch }) {
         className="input"
         placeholder="Escribe el título de una película..."
         value={text}
-        onChange={handleChange}
+        onChange={(event) => setText(event.target.value)}
       />
     </div>
   )
