@@ -1,8 +1,24 @@
+import { useState, useEffect } from 'react'
 import Button from '../Button/Button.jsx'
 import MovieSearch from '../MovieSearch/MovieSearch.jsx'
+import useDebounce from '../../hooks/useDebounce.js'
 import './Hero.css'
 
 function Hero({ movie, onSearch }) {
+  // The text lives here because MovieSearch shows it and the clear button resets it
+  const [searchText, setSearchText] = useState('')
+  const debouncedText = useDebounce(searchText, 500)
+
+  // App only receives the text when the user stops typing
+  useEffect(() => {
+    onSearch(debouncedText)
+  }, [debouncedText, onSearch])
+
+  function clearSearch() {
+    setSearchText('')
+    onSearch('')
+  }
+
   return (
     <section
       className="hero"
@@ -18,9 +34,14 @@ function Hero({ movie, onSearch }) {
               {movie.classification} · ★ {movie.rating}
             </p>
             <p className="hero-synopsis">{movie.synopsis}</p>
-            <MovieSearch onSearch={onSearch} />
+            <MovieSearch value={searchText} onChange={setSearchText} />
             <div className="flex-gap">
               <Button href="#cartelera">Ver cartelera</Button>
+              {searchText !== '' && (
+                <Button variant="outline" onClick={clearSearch}>
+                  ✕ Limpiar filtro
+                </Button>
+              )}
               <Button href="#contacto" variant="secondary">Contáctanos</Button>
             </div>
           </div>
