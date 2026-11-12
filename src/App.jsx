@@ -26,6 +26,9 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(favorites))
   }, [favorites])
 
+  // The counter is calculated in the root from the list, so it is always in sync
+  const favoritesCount = favorites.length
+
   // Text written in the search box
   const [search, setSearch] = useState('')
 
@@ -45,7 +48,7 @@ function App() {
 
   return (
     <>
-      <Header favoritesCount={favorites.length} />
+      <Header favoritesCount={favoritesCount} />
       <main>
         <Hero movie={featuredMovie} onSearch={setSearch} />
         <PremieresSection />

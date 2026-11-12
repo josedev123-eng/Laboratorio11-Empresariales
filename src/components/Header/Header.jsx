@@ -1,5 +1,6 @@
 import './Header.css'
 
+// Header only receives the number, not the list of favorites
 function Header({ favoritesCount }) {
   return (
     <header className="header">
@@ -11,9 +12,11 @@ function Header({ favoritesCount }) {
           <ul className="header-nav">
             <li><a href="#">Inicio</a></li>
             <li><a href="#cartelera">Cartelera</a></li>
-            <li><a href="#">Promociones</a></li>
+            <li><a href="#estrenos">Estrenos</a></li>
             <li><a href="#contacto">Contacto</a></li>
-            <li className="header-favorites">♥ Favoritas: {favoritesCount}</li>
+            <li className="header-favorites">
+              ♥ Favoritas <span className="badge">{favoritesCount}</span>
+            </li>
           </ul>
         </nav>
       </div>
