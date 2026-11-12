@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 import Header from './components/Header/Header.jsx'
 import Hero from './components/Hero/Hero.jsx'
 import MovieList from './components/MovieList/MovieList.jsx'
@@ -27,12 +28,17 @@ function App() {
   // Text written in the search box
   const [search, setSearch] = useState('')
 
-  // Adds the movie if it is not in the list, or removes it if it is
+  // Adds the movie if it is not in the list, or removes it if it is.
+  // The card only sends the id; App decides how to notify the user
   function toggleFavorite(movieId) {
+    const movie = movies.find((item) => item.id === movieId)
+
     if (favorites.includes(movieId)) {
       setFavorites(favorites.filter((id) => id !== movieId))
+      toast(`"${movie.title}" se quitó de favoritas`, { icon: '💔' })
     } else {
       setFavorites([...favorites, movieId])
+      toast.success(`"${movie.title}" se agregó a favoritas`)
     }
   }
 
@@ -49,6 +55,12 @@ function App() {
         />
       </main>
       <Footer />
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: { background: '#1a1d24', color: '#f2f2f2' },
+        }}
+      />
     </>
   )
 }
