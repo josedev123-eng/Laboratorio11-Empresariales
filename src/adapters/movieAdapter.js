@@ -11,6 +11,7 @@ export function adaptMovie(apiMovie) {
     // The API sends the score from 0 to 10, the app shows it from 0 to 5
     rating: apiMovie.vote_average / 2,
     schedules: apiMovie.showtimes ?? [],
+    releaseDate: apiMovie.release_date ?? null,
   }
 }
 
