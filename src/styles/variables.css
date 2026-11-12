@@ -16,3 +16,11 @@
 
   --max-width: 1200px;
 }
+
+/* New values for lab 11 */
+:root {
+  --font-title: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  --color-success: #2ecc71;
+  --color-skeleton: #262a33;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}

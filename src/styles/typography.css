@@ -25,3 +25,18 @@ h3 {
 .text-small {
   font-size: 0.85rem;
 }
+
+h1,
+h2,
+.section-title {
+  font-family: var(--font-title);
+}
+
+.text-error {
+  color: var(--color-primary);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
