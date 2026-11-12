@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 import Header from './components/Header/Header.jsx'
 import Hero from './components/Hero/Hero.jsx'
+import PremieresSection from './components/PremieresSection/PremieresSection.jsx'
 import MovieList from './components/MovieList/MovieList.jsx'
 import Footer from './components/Footer/Footer.jsx'
-import movies from './data/movies.js'
+import moviesApi from './data/movies.js'
+import { adaptMovies } from './adapters/movieAdapter.js'
+
+// All the movies pass through the adapter before reaching the components
+const movies = adaptMovies(moviesApi)
 
 function App() {
   const featuredMovie = movies[2]
@@ -20,23 +26,32 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(favorites))
   }, [favorites])
 
+  // The counter is calculated in the root from the list, so it is always in sync
+  const favoritesCount = favorites.length
+
   // Text written in the search box
   const [search, setSearch] = useState('')
 
-  // Adds the movie if it is not in the list, or removes it if it is
+  // Adds the movie if it is not in the list, or removes it if it is.
+  // The card only sends the id; App decides how to notify the user
   function toggleFavorite(movieId) {
+    const movie = movies.find((item) => item.id === movieId)
+
     if (favorites.includes(movieId)) {
       setFavorites(favorites.filter((id) => id !== movieId))
+      toast(`"${movie.title}" se quitó de favoritas`, { icon: '💔' })
     } else {
       setFavorites([...favorites, movieId])
+      toast.success(`"${movie.title}" se agregó a favoritas`)
     }
   }
 
   return (
     <>
-      <Header favoritesCount={favorites.length} />
+      <Header favoritesCount={favoritesCount} />
       <main>
         <Hero movie={featuredMovie} onSearch={setSearch} />
+        <PremieresSection />
         <MovieList
           movies={movies}
           search={search}
@@ -45,6 +60,12 @@ function App() {
         />
       </main>
       <Footer />
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: { background: '#1a1d24', color: '#f2f2f2' },
+        }}
+      />
     </>
   )
 }

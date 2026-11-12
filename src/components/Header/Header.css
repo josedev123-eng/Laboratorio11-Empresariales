@@ -39,3 +39,7 @@
   color: var(--color-primary);
   font-weight: bold;
 }
+
+.header-favorites .badge {
+  margin-left: 4px;
+}

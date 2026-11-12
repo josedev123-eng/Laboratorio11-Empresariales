@@ -1,7 +1,13 @@
 import MovieCard from '../MovieCard/MovieCard.jsx'
+import useWindowSize from '../../hooks/useWindowSize.js'
+import { getColumns } from '../../utils/columns.js'
 import './MovieList.css'
 
 function MovieList({ movies, search, favorites, onToggleFavorite }) {
+  // Number of cards per row depends on the window width
+  const { width } = useWindowSize()
+  const columns = getColumns(width)
+
   // Only the movies whose title contains the searched text
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(search.toLowerCase())
@@ -20,7 +26,10 @@ function MovieList({ movies, search, favorites, onToggleFavorite }) {
           </p>
         </div>
       ) : (
-        <div className="movie-list">
+        <div
+          className="movie-list"
+          style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
+        >
           {filteredMovies.map((movie) => (
             <MovieCard
               key={movie.id}
